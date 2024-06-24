@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-
 import '../view/button_widget.dart';
 import '../model/timer.dart';
 
+// Расширение, позволяющее работать с Enum по-другому (вернуть список виджетов)
 extension ButtonStateExt on ButtonState {
+
   List<Widget> get ButtonIconWidget {
     switch (this) {
       case ButtonState.initial:

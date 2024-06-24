@@ -12,7 +12,6 @@ class ButtonsContainer extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(buttonProvider);
 
-    print('building ButtonsContainer');
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: state.ButtonIconWidget,
@@ -20,6 +19,7 @@ class ButtonsContainer extends HookConsumerWidget {
   }
 }
 
+// Старт таймера
 class StartButton extends ConsumerWidget {
   const StartButton({Key? key}) : super(key: key);
   @override
@@ -33,6 +33,7 @@ class StartButton extends ConsumerWidget {
   }
 }
 
+// Пауза таймера
 class PauseButton extends ConsumerWidget {
   const PauseButton({Key? key}) : super(key: key);
   @override
@@ -46,6 +47,7 @@ class PauseButton extends ConsumerWidget {
   }
 }
 
+// Перезапуск таймера
 class ResetButton extends ConsumerWidget {
   const ResetButton({Key? key}) : super(key: key);
   @override

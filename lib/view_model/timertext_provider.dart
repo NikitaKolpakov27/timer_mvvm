@@ -1,12 +1,13 @@
 import 'dart:async';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
 import '../model/timer.dart';
 
 final timerProvider = StateNotifierProvider<TimerNotifier, TimerModel>(
       (ref) => TimerNotifier(),
 );
 
+
+// Используем, чтобы узнать, сколько времени осталось
 final _timeLeftProvider = Provider<String>((ref) {
   return ref.watch(timerProvider).timeLeft;
 });
@@ -14,6 +15,7 @@ final _timeLeftProvider = Provider<String>((ref) {
 final timeLeftProvider = Provider<String>((ref) {
   return ref.watch(_timeLeftProvider);
 });
+
 
 class TimerNotifier extends StateNotifier<TimerModel> {
   TimerNotifier() : super(_initialState);
@@ -24,9 +26,10 @@ class TimerNotifier extends StateNotifier<TimerModel> {
     ButtonState.initial,
   );
 
-  final Ticker _ticker = Ticker();
-  StreamSubscription<int>? _tickerSubscription;
+  final Ticker _ticker = Ticker(); // Счетчик времени
+  StreamSubscription<int>? _tickerSubscription; // 'подписка' на события
 
+  // Текстовое представление оставшегося времени
   static String _durationString(int duration) {
     final minutes = ((duration / 60) % 60).floor().toString().padLeft(2, '0');
     final seconds = (duration % 60).floor().toString().padLeft(2, '0');
@@ -73,7 +76,7 @@ class TimerNotifier extends StateNotifier<TimerModel> {
 
   void addTime() {
     _initialDuration += 5;
-    state = TimerModel(_durationString(_initialDuration), ButtonState.initial,);
+    state = TimerModel(_durationString(_initialDuration), ButtonState.initial);
   }
 
   @override

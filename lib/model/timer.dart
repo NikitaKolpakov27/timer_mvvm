@@ -9,12 +9,18 @@ class Ticker {
   }
 }
 
+// Класс таймера, состоящий из:
+//
+// - ОСТАВШЕГОСЯ ВРЕМЕНИ (STR)
+// - ТЕКУЩЕГО СОСТОЯНИЯ КНОПОК
 class TimerModel {
   const TimerModel(this.timeLeft, this.buttonState);
+
   final String timeLeft;
   final ButtonState buttonState;
 }
 
+// Состояния таймера
 enum ButtonState {
   initial,
   started,
